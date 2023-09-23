@@ -7,9 +7,14 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "postinstall": "bash ./postinstall.sh"
   },
   "dependencies": {
     "astro": "^3.1.2"
+  },
+  "volta": {
+    "node": "18.18.0",
+    "npm": "9.8.1"
   }
 }

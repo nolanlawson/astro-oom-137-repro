@@ -1,6 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import { images } from '../utils/allImages.js';
+import {Image} from "astro:assets";
+
+const imagesToDisplay = await Promise.all(Object.values(images).map(async importer => {
+	return (await (await importer()).default)
+}))
 ---
 
 <Layout title="Welcome to Astro.">
@@ -60,6 +66,11 @@ import Card from '../components/Card.astro';
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
 		</ul>
+		{
+			imagesToDisplay.map(_ => (<>
+				<Image src={_} alt=""></Image>
+			</>))
+		}
 	</main>
 </Layout>
 
